@@ -1,6 +1,7 @@
 package io.javabrains.springboot.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.*;
@@ -23,5 +24,13 @@ public class TopicController {
 
         return ts.getAllTopics();
     }
+
+    @RequestMapping("/topics/{id}")
+    public Topic getTopic(@PathVariable String id)
+    {   // tells spring that String passed in parameter is actually a variable in URL
+
+        return ts.getTopic(id);
+    }
+
 
 }
