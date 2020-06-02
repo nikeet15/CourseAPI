@@ -33,9 +33,23 @@ public class TopicController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/topics")
     // map this method that is a POST request on "/topics"
-    public void addTopic(@RequestBody Topic topic){
+    public void addTopic(@RequestBody Topic t){
 
-        ts.addTopic(topic);
+        ts.addTopic(t);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
+    // map this method that is a POST request on "/topics"
+    public void updateTopic(@RequestBody Topic t, @PathVariable String id){
+
+        ts.updateTopic(id, t);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
+    // map this method that is a DELETE request on "/topics"
+    public void deleteTopic(@PathVariable String id){
+
+        ts.deleteTopic(id);
     }
 
 
