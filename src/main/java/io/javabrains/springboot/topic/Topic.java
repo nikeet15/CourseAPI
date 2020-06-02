@@ -1,6 +1,15 @@
 package io.javabrains.springboot.topic;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+// tell spring that this is the schema of table
+// and store instances of this Class in rows
 public class Topic {
+
+    @Id
+    // primary key
     private String id;
     private String name;
     private String description;
