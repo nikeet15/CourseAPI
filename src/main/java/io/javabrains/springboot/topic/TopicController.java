@@ -1,9 +1,8 @@
 package io.javabrains.springboot.topic;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 
 @RestController
@@ -18,7 +17,7 @@ public class TopicController {
 
     @RequestMapping("/topics")
     public List<Topic> getAllTopics()
-    {
+    {   // map this method that is a GET request on "/topics"
         // this list of object gets automatically converted to JSON
         // as it is a REST Controller
 
@@ -30,6 +29,13 @@ public class TopicController {
     {   // tells spring that String passed in parameter is actually a variable in URL
 
         return ts.getTopic(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/topics")
+    // map this method that is a POST request on "/topics"
+    public void addTopic(@RequestBody Topic topic){
+
+        ts.addTopic(topic);
     }
 
 
